@@ -3,6 +3,7 @@ session_start();
 
 
 
+
 if($_SESSION){
 
 	header("Location: /app/app/index.php");
