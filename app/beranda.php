@@ -212,12 +212,11 @@ if(empty($_SESSION)){
 						        </style>
 						        <center>
 						        	<?php 
-						        	echo date('m');
+						        	echo date('F Y');
 						        	?>
 						        <link rel="stylesheet" href="circle.css">
                                 <!-- green -->
-				                <div class="row">
-				                	<div class="col-md-6 col-lg-3">
+				                
 						                <div class="clearfix">
 
 						                    <div class="c100 p50 big green">
@@ -230,8 +229,7 @@ if(empty($_SESSION)){
 
 						    
 						                </div>
-				            		</div>
-				            	</div>
+				            		
 				            </center>
                 			<!-- /green -->
 

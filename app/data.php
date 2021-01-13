@@ -145,11 +145,7 @@ if(empty($_SESSION)){
                                         }else{
                                             
 
-                                           echo "<li>
-                                    <a href='beranda.php' class=''>
-                                        <i class='metismenu-icon pe-7s-pen'></i>
-                                        Beranda
-                                    </a>
+                                           echo "
                                            <li>
                                     <a href='inputdata.php' class=''>
                                         <i class='metismenu-icon pe-7s-pen'></i>
@@ -214,7 +210,7 @@ if(empty($_SESSION)){
                                                         foreach($data as $row){
                                                     
 
-                                                                }
+                                                                
 
                                                     ?>
                                                     <?php 
@@ -227,8 +223,8 @@ if(empty($_SESSION)){
                                                         
 
                                                     }else{
-                                                       echo "YES"; 
-
+                                                       //echo "YES"; 
+                                                        
                                                        ?>
                                                        <tr>
                                                     <th><?php echo $nomor; ?></th>
@@ -244,7 +240,8 @@ if(empty($_SESSION)){
                                                     ?>
                                                 
                                                 <?php  ?>
-                                                <?php } ?>
+                                                <?php }
+                                                } ?>
                                                 
                                                 </tbody>
                                             </table>

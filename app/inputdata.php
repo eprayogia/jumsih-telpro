@@ -145,11 +145,7 @@ if(empty($_SESSION)){
                                         }else{
                                             
 
-                                           echo "<li>
-                                    <a href='beranda.php' class=''>
-                                        <i class='metismenu-icon pe-7s-pen'></i>
-                                        Beranda
-                                    </a>
+                                           echo "
                                     <li>
                                     <a href='inputdata.php' class='mm-active'>
                                         <i class='metismenu-icon pe-7s-pen'></i>
@@ -173,6 +169,9 @@ if(empty($_SESSION)){
                         </div>
                     </div>
                 </div>    
+
+
+
                 <div class="app-main__outer">
                     <div class="app-main__inner">
                         <div class="app-page-title">
@@ -181,14 +180,39 @@ if(empty($_SESSION)){
                                 </div>
                                     <!--ISI KONTEN-->
                                     
+                                    
 
-
+                                    
+                                        
 
 
 
                             <div class="tab-content">
                             <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
                                 <div class="main-card mb-3 card">
+
+                                    <div class="card-body"><h5 class="card-title"><?php echo date('F Y'); ?></h5>
+                                        <?php
+                                            include("../koneksi.php");
+                                            $nami = $_SESSION['nama'];
+                                            $bln = date('F Y');
+                                            $sqli = mysqli_query($koneksi,"SELECT * FROM data WHERE bulan='$bln' AND fmbm='$nami'");
+                                            $jumbulanini = array();
+                                            while(($dat = mysqli_fetch_array($sqli))!=null){
+                                                        $jumbulanini[] = $dat;
+                                                    }
+                                                    $hitnow = count($jumbulanini);
+                                                   
+                                                    $persen = ($hitnow/4)*100;
+                                                    
+
+                                        ?>
+
+                                        <div class="text-center"><?php echo $hitnow; ?> of 4</div>
+                                        <div class="mb-3 progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: <?php echo $persen; ?>%;"></div>
+                                        </div>
+
                                     <?php
                                     function alert($msg) {
                                         echo "<script type='text/javascript'>alert('$msg');</script>";
@@ -317,8 +341,12 @@ if(empty($_SESSION)){
                                                 mysqli_query($koneksi, "INSERT INTO data VALUES(NULL,'$noww','$bulann','$areaa','$fmbmm','$lokasi','$uraian','$periode','$xx')");
 
                                                 
-
-                                                alert("Berhasil");
+                                                echo "<script typ='text/javascript'>
+                                                alert('Data berhasil dikirim');
+                                                location='./data.php';
+                                                </script>";
+                                               // alert("Berhasil");
+                                                
                                             }else{
                                                 alert("Gagal");
                                             }
@@ -331,53 +359,7 @@ if(empty($_SESSION)){
                                 <!--AKHIR ISI KONTEN-->
 
                             </div>
-                            <div class="tab-pane tabs-animation fade" id="tab-content-1" role="tabpanel">
-                                <div class="main-card mb-3 card">
-                                    <div class="card-body"><h5 class="card-title">Grid</h5>
-                                        <form class="">
-                                            <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">Email</label>
-                                                <div class="col-sm-10"><input name="email" id="exampleEmail" placeholder="with a placeholder" type="email" class="form-control"></div>
-                                            </div>
-                                            <div class="position-relative row form-group"><label for="examplePassword" class="col-sm-2 col-form-label">Password</label>
-                                                <div class="col-sm-10"><input name="password" id="examplePassword" placeholder="password placeholder" type="password" class="form-control"></div>
-                                            </div>
-                                            <div class="position-relative row form-group"><label for="exampleSelect" class="col-sm-2 col-form-label">Select</label>
-                                                <div class="col-sm-10"><select name="select" id="exampleSelect" class="form-control"></select></div>
-                                            </div>
-                                            <div class="position-relative row form-group"><label for="exampleSelectMulti" class="col-sm-2 col-form-label">Select Multiple</label>
-                                                <div class="col-sm-10"><select multiple="" name="selectMulti" id="exampleSelectMulti" class="form-control"></select></div>
-                                            </div>
-                                            <div class="position-relative row form-group"><label for="exampleText" class="col-sm-2 col-form-label">Text Area</label>
-                                                <div class="col-sm-10"><textarea name="text" id="exampleText" class="form-control"></textarea></div>
-                                            </div>
-                                            <div class="position-relative row form-group"><label for="exampleFile" class="col-sm-2 col-form-label">File</label>
-                                                <div class="col-sm-10"><input name="file" id="exampleFile" type="file" class="form-control-file">
-                                                    <small class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-                                                </div>
-                                            </div>
-                                            <fieldset class="position-relative row form-group">
-                                                <legend class="col-form-label col-sm-2">Radio Buttons</legend>
-                                                <div class="col-sm-10">
-                                                    <div class="position-relative form-check"><label class="form-check-label"><input name="radio2" type="radio" class="form-check-input"> Option one is this and that—be sure to include why it's great</label></div>
-                                                    <div class="position-relative form-check"><label class="form-check-label"><input name="radio2" type="radio" class="form-check-input"> Option two can be something else and selecting it will deselect option
-                                                        one</label></div>
-                                                    <div class="position-relative form-check disabled"><label class="form-check-label"><input name="radio2" disabled="" type="radio" class="form-check-input"> Option three is disabled</label></div>
-                                                </div>
-                                            </fieldset>
-                                            <div class="position-relative row form-group"><label for="checkbox2" class="col-sm-2 col-form-label">Checkbox</label>
-                                                <div class="col-sm-10">
-                                                    <div class="position-relative form-check"><label class="form-check-label"><input id="checkbox2" type="checkbox" class="form-check-input"> Check me out</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="position-relative row form-check">
-                                                <div class="col-sm-10 offset-sm-2">
-                                                    <button class="btn btn-secondary">Submit</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
 
 

@@ -190,7 +190,7 @@ if(empty($_SESSION)){
                                             while($data = mysqli_fetch_array($query)){                    
                                             ?>
                                     <div>Selamat Datang, <?php echo $data['nama']; }?>
-                                        <div class="page-title-subheading">Dashboard report JUMSIH Telkom Property
+                                        <div class="page-title-subheading">Laporan JUMSIH Telkom Property <?php echo date('F Y'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -270,22 +270,22 @@ if(empty($_SESSION)){
                                                     $bulanini = date('F Y');
                                                     //echo $bulanini;
                                                     
-                                                    $sql = mysqli_query($koneksi,"SELECT * FROM users WHERE level='2'"); //beda area ganti level
-                                                    $jum = array();
-                                                    while(($row = mysqli_fetch_array($sql))!=null){
-                                                        $jum[] = $row;
+                                                    $sql1 = mysqli_query($koneksi,"SELECT * FROM users WHERE level='2'"); //beda area ganti level
+                                                    $jum1 = array();
+                                                    while(($row1 = mysqli_fetch_array($sql1))!=null){
+                                                        $jum1[] = $row1;
                                                     }
-                                                    $hitung = count($jum);
-                                                    //echo $hitung;
+                                                    $hitung1 = count($jum1);
+                                                    //echo $hitung1;
 
-                                                    $ambildata = mysqli_query($koneksi, "SELECT * FROM data WHERE area='AREA1' AND bulan='$bulanini'");
-                                                    $hitungjumlah = array();
-                                                    while (($dat = mysqli_fetch_array($ambildata))!=NULL) {
-                                                        $hitungjumlah[] = $dat;
+                                                    $ambildata1 = mysqli_query($koneksi, "SELECT * FROM data WHERE area='AREA1' AND bulan='$bulanini'");
+                                                    $hitungjumlah1 = array();
+                                                    while (($dat1 = mysqli_fetch_array($ambildata1))!=NULL) {
+                                                        $hitungjumlah1[] = $dat1;
                                                     }
-                                                    $hitungdata = count($hitungjumlah);
+                                                    $hitungdata1 = count($hitungjumlah1);
                                                     
-                                                    $hasarea1 = ($hitungdata/4)/$hitung*100; //Hitung persentase
+                                                    $hasarea1 = ($hitungdata1/4)/$hitung1*100; //Hitung persentase
 
                                                     $numbar1 = number_format($hasarea1); //untuk progress bar
                                                     
@@ -330,7 +330,7 @@ if(empty($_SESSION)){
                                                         $jum3[] = $row3;
                                                     }
                                                     $hitung3 = count($jum3);
-                                                    //echo $hitung;
+                                                    //echo $hitung3;
 
                                                     $ambildata3 = mysqli_query($koneksi, "SELECT * FROM data WHERE area='AREA2' AND bulan='$bulanini'");
                                                     $hitungjumlah3 = array();
@@ -353,6 +353,7 @@ if(empty($_SESSION)){
                                                 </div>
                                                 <div class="widget-content-right w-100">
                                                     <div class="progress-bar-xs progress">
+                                                       <!-- progress bar -->
                                                         <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="min-width: 0 em; width: <?php echo $numbar3; ?>%;"></div>
                                                     </div>
                                                 </div>
@@ -371,11 +372,39 @@ if(empty($_SESSION)){
                                         <div class="widget-content-outer">
                                             <div class="widget-content-wrapper">
                                                 <div class="widget-content-left pr-2 fsize-1">
-                                                    <div class="widget-numbers mt-0 fsize-3 text-info">89%</div>
+
+
+                                                    <?php
+                                                    include("../koneksi.php");
+                                                    
+                                                    $sql4 = mysqli_query($koneksi,"SELECT * FROM users WHERE level='4'"); //beda area ganti level
+                                                    $jum4 = array();
+                                                    while(($row4 = mysqli_fetch_array($sql4))!=null){
+                                                        $jum4[] = $row4;
+                                                    }
+                                                    $hitung4 = count($jum4);
+                                                    //echo $hitung4;
+
+                                                    $ambildata4 = mysqli_query($koneksi, "SELECT * FROM data WHERE area='AREA3' AND bulan='$bulanini'");
+                                                    $hitungjumlah4 = array();
+                                                    while (($dat4 = mysqli_fetch_array($ambildata4))!=NULL) {
+                                                        $hitungjumlah4[] = $dat4;
+                                                    }
+                                                    $hitungdata4 = count($hitungjumlah4);
+                                                    
+                                                    $hasarea3 = ($hitungdata4/4)/$hitung4*100; //Hitung persentase
+
+                                                    $numbar4 = number_format($hasarea3); //untuk progress bar
+                                                    
+                                                ?>
+
+                                                    <!-- persentase-->
+                                                    <div class="widget-numbers mt-0 fsize-3 text-info"><?php echo number_format($hasarea3); echo "%"; ?></div>
                                                 </div>
                                                 <div class="widget-content-right w-100">
                                                     <div class="progress-bar-xs progress">
-                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                                                        <!-- progress bar -->
+                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="min-width: 0 em; width: <?php echo $numbar4; ?>%;"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -393,11 +422,40 @@ if(empty($_SESSION)){
                                         <div class="widget-content-outer">
                                             <div class="widget-content-wrapper">
                                                 <div class="widget-content-left pr-2 fsize-1">
-                                                    <div class="widget-numbers mt-0 fsize-3 text-info">89%</div>
+
+
+                                                    <?php
+                                                    include("../koneksi.php");
+                                                    
+                                                    $sql5 = mysqli_query($koneksi,"SELECT * FROM users WHERE level='5'"); //beda area ganti level
+                                                    $jum5 = array();
+                                                    while(($row5 = mysqli_fetch_array($sql5))!=null){
+                                                        $jum5[] = $row5;
+                                                    }
+                                                    $hitung5 = count($jum5);
+                                                    //echo $hitung5;
+
+                                                    $ambildata5 = mysqli_query($koneksi, "SELECT * FROM data WHERE area='AREA4' AND bulan='$bulanini'");
+                                                    $hitungjumlah5 = array();
+                                                    while (($dat5 = mysqli_fetch_array($ambildata5))!=NULL) {
+                                                        $hitungjumlah5[] = $dat5;
+                                                    }
+                                                    $hitungdata5 = count($hitungjumlah5);
+                                                    
+                                                    $hasarea4 = ($hitungdata5/4)/$hitung5*100; //Hitung persentase
+
+                                                    $numbar5 = number_format($hasarea4); //untuk progress bar
+                                                    
+                                                ?>
+
+
+                                                    <!-- persentase-->
+                                                    <div class="widget-numbers mt-0 fsize-3 text-info"><?php echo number_format($hasarea4); echo "%"; ?></div>
                                                 </div>
                                                 <div class="widget-content-right w-100">
                                                     <div class="progress-bar-xs progress">
-                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                                                        <!-- progress bar -->
+                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="min-width: 0 em; width: <?php echo $numbar5; ?>%;"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -415,11 +473,40 @@ if(empty($_SESSION)){
                                         <div class="widget-content-outer">
                                             <div class="widget-content-wrapper">
                                                 <div class="widget-content-left pr-2 fsize-1">
-                                                    <div class="widget-numbers mt-0 fsize-3 text-info">89%</div>
+
+
+                                                    <?php
+                                                    include("../koneksi.php");
+                                                    
+                                                    $sql6 = mysqli_query($koneksi,"SELECT * FROM users WHERE level='6'"); //beda area ganti level
+                                                    $jum6 = array();
+                                                    while(($row6 = mysqli_fetch_array($sql6))!=null){
+                                                        $jum6[] = $row6;
+                                                    }
+                                                    $hitung6 = count($jum6);
+                                                    //echo $hitung6;
+
+                                                    $ambildata6 = mysqli_query($koneksi, "SELECT * FROM data WHERE area='AREA5' AND bulan='$bulanini'");
+                                                    $hitungjumlah6 = array();
+                                                    while (($dat6 = mysqli_fetch_array($ambildata6))!=NULL) {
+                                                        $hitungjumlah6[] = $dat6;
+                                                    }
+                                                    $hitungdata6 = count($hitungjumlah6);
+                                                    
+                                                    $hasarea5 = ($hitungdata6/4)/$hitung6*100; //Hitung persentase
+
+                                                    $numbar6 = number_format($hasarea5); //untuk progress bar
+                                                    
+                                                ?>
+
+
+                                                    <!-- persentase-->
+                                                    <div class="widget-numbers mt-0 fsize-3 text-info"><?php echo number_format($hasarea5); echo "%"; ?></div>
                                                 </div>
                                                 <div class="widget-content-right w-100">
                                                     <div class="progress-bar-xs progress">
-                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                                                        <!-- progress bar -->
+                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="min-width: 0 em; width: <?php echo $numbar6; ?>%;"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -437,11 +524,40 @@ if(empty($_SESSION)){
                                         <div class="widget-content-outer">
                                             <div class="widget-content-wrapper">
                                                 <div class="widget-content-left pr-2 fsize-1">
-                                                    <div class="widget-numbers mt-0 fsize-3 text-info">89%</div>
+
+
+                                                    <?php
+                                                    include("../koneksi.php");
+                                                    
+                                                    $sql7 = mysqli_query($koneksi,"SELECT * FROM users WHERE level='7'"); //beda area ganti level
+                                                    $jum7 = array();
+                                                    while(($row7 = mysqli_fetch_array($sql7))!=null){
+                                                        $jum7[] = $row7;
+                                                    }
+                                                    $hitung7 = count($jum7);
+                                                    //echo $hitung7;
+
+                                                    $ambildata7 = mysqli_query($koneksi, "SELECT * FROM data WHERE area='AREA6' AND bulan='$bulanini'");
+                                                    $hitungjumlah7 = array();
+                                                    while (($dat7 = mysqli_fetch_array($ambildata7))!=NULL) {
+                                                        $hitungjumlah7[] = $dat7;
+                                                    }
+                                                    $hitungdata7 = count($hitungjumlah7);
+                                                    
+                                                    $hasarea6 = ($hitungdata7/4)/$hitung7*100; //Hitung persentase
+
+                                                    $numbar7 = number_format($hasarea6); //untuk progress bar
+                                                    
+                                                ?>
+
+
+                                                    <!-- persentase-->
+                                                    <div class="widget-numbers mt-0 fsize-3 text-info"><?php echo number_format($hasarea6); echo "%"; ?></div>
                                                 </div>
                                                 <div class="widget-content-right w-100">
                                                     <div class="progress-bar-xs progress">
-                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                                                         <!-- progress bar -->
+                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="min-width: 0 em; width: <?php echo $numbar7; ?>%;"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -459,11 +575,41 @@ if(empty($_SESSION)){
                                         <div class="widget-content-outer">
                                             <div class="widget-content-wrapper">
                                                 <div class="widget-content-left pr-2 fsize-1">
-                                                    <div class="widget-numbers mt-0 fsize-3 text-info">89%</div>
+
+
+
+                                                    <?php
+                                                    include("../koneksi.php");
+                                                    
+                                                    $sql8 = mysqli_query($koneksi,"SELECT * FROM users WHERE level='8'"); //beda area ganti level
+                                                    $jum8 = array();
+                                                    while(($row8 = mysqli_fetch_array($sql8))!=null){
+                                                        $jum8[] = $row8;
+                                                    }
+                                                    $hitung8 = count($jum8);
+                                                    //echo $hitung8;
+
+                                                    $ambildata8 = mysqli_query($koneksi, "SELECT * FROM data WHERE area='AREA7' AND bulan='$bulanini'");
+                                                    $hitungjumlah8 = array();
+                                                    while (($dat8 = mysqli_fetch_array($ambildata8))!=NULL) {
+                                                        $hitungjumlah8[] = $dat8;
+                                                    }
+                                                    $hitungdata8 = count($hitungjumlah8);
+                                                    
+                                                    $hasarea7 = ($hitungdata8/4)/$hitung8*100; //Hitung persentase
+
+                                                    $numbar8 = number_format($hasarea7); //untuk progress bar
+                                                    
+                                                ?>
+
+
+                                                    <!-- persentase-->
+                                                    <div class="widget-numbers mt-0 fsize-3 text-info"><?php echo number_format($hasarea7); echo "%"; ?></div>
                                                 </div>
                                                 <div class="widget-content-right w-100">
                                                     <div class="progress-bar-xs progress">
-                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                                                        <!-- progress bar -->
+                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="min-width: 0 em; width: <?php echo $numbar8; ?>%;"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -481,11 +627,54 @@ if(empty($_SESSION)){
                                         <div class="widget-content-outer">
                                             <div class="widget-content-wrapper">
                                                 <div class="widget-content-left pr-2 fsize-1">
-                                                    <div class="widget-numbers mt-0 fsize-3 text-info">89%</div>
+
+
+                                                    <?php
+                                                    include("../koneksi.php");
+                                                    
+                                                    //$sql9 = mysqli_query($koneksi,"SELECT * FROM users WHERE level='2' AND level='3' AND level='4' AND level='5' AND level='6' level='7' level='8'"); //beda area ganti level
+                                                    //$jum9 = array();
+                                                    //while(($row9 = mysqli_fetch_array($sql9))!=null){
+                                                    //    $jum9[] = $row9;
+                                                    //}
+                                                    //$hitung9 = count($jum9);
+                                                    //echo $hitung;
+
+                                                   // $ambildata8 = mysqli_query($koneksi, "SELECT * FROM data WHERE area='AREA7' AND bulan='$bulanini'");
+                                                   // $hitungjumlah8 = array();
+                                                    //while (($dat8 = mysqli_fetch_array($ambildata8))!=NULL) {
+                                                    //    $hitungjumlah8[] = $dat8;
+                                                    //}
+                                                    //$hitungdata8 = count($hitungjumlah8);
+                                                    
+                                                    //$hasarea7 = ($hitungdata8/4)/$hitung8*100; //Hitung persentase
+
+                                                    //$numbar8 = number_format($hasarea7); //untuk progress bar
+                                                    //echo $hitung1." "; 
+                                                    //echo $hitung3." ";
+                                                    //echo $hitung4." ";
+                                                    //echo $hitung5." ";
+                                                    //echo $hitung6." ";
+                                                    //echo $hitung7." ";
+                                                    //echo $hitung8." ";
+                                                    $totuser = ($hitung1+$hitung3+$hitung4+$hitung5+$hitung6+$hitung7+$hitung8);
+                                                    $totdata = ($hitungdata1+$hitungdata3+$hitungdata4+$hitungdata5+$hitungdata6+$hitungdata7+$hitungdata8);
+                                                   // echo $totdata." data ";
+                                                   // echo $totuser." user ";
+
+                                                    $allhasil = ($totdata/4)/$totuser*100;
+                                                   // echo number_format($allhasil);
+                                                ?>
+
+
+
+                                                    <!-- persentase-->
+                                                    <div class="widget-numbers mt-0 fsize-3 text-info"><?php echo number_format($allhasil); echo "%"; ?></div>
                                                 </div>
                                                 <div class="widget-content-right w-100">
                                                     <div class="progress-bar-xs progress">
-                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                                                        <!-- progress bar -->
+                                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="min-width: 0 em; width: <?php echo $allhasil; ?>%;"></div>
                                                     </div>
                                                 </div>
                                             </div>
